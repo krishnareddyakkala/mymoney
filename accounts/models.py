@@ -21,7 +21,7 @@ class SubCategory(models.Model):
     def __str__(self):
         return self.category_name
 
-
+# test commit
 class DebitCategory(models.Model):
     category_name = models.CharField("Category Name", max_length=120, unique=True)
 
