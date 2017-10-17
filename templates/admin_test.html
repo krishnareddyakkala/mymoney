@@ -1,0 +1,18 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls admin_static %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}"/>
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'chart_view' %}" method="post">
+        {% csrf_token %}
+        {{ date_range_form }}
+         <div class="submit-row">
+            <input type="submit" value="Submit" class="default"/>
+        </div>
+    </form>
+{% endblock %}

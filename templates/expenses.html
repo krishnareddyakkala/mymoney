@@ -1,0 +1,94 @@
+{% load static %}
+{% load bootstrap3 %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+		{% bootstrap_css %}
+
+		<script type="text/javascript" src=" {% static 'js/jquery-1.11.3.min.js' %}"></script>
+		{% bootstrap_javascript %}
+		<style type="text/css">
+${demo.css}
+		</style>
+
+		<script src="{% static 'js/charts/highcharts.js' %}"></script>
+		<script src="{% static 'js/charts/modules/drilldown.js' %}"></script>
+	</head>
+	<body>
+
+	<form action="." method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form date_range_form layout='inline' %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">
+            {% bootstrap_icon "star" %} Submit
+        </button>
+    {% endbuttons %}
+</form>
+
+
+<div id="container" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+
+		<script type="text/javascript">
+
+// Create the chart
+Highcharts.chart('container', {
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        text: 'Browser market shares. January, 2015 to May, 2015'
+    },
+    subtitle: {
+        text: 'Click the slices to view versions. Source: netmarketshare.com.'
+    },
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}: {point.y:.1f}%'
+            }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+    },
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [
+        {% for c in expense_main_category %}
+        {
+            name: "{{ c.main_category__category_name }}",
+            y: {{ c.check_sum }},
+            drilldown: '{{ c.main_category__category_name }}'
+        }{% if not forloop.last %},{% endif %}
+
+        {% endfor %}
+        ]
+    }],
+    drilldown: {
+        series: [
+        {% for c in expense_main_category %}
+
+        {
+            name: '{{ c.main_category__category_name }}',
+            id: '{{ c.main_category__category_name }}',
+            data: [
+                {% for i in expense_main_sub_category %}
+                    {% if c.main_category__category_name == i.main_category__category_name %}
+                    ['{{ i.sub_category__category_name }}', {{i.check_sum}}] {% if not forloop.last %},{% endif %}
+                    {% endif %}
+                {% endfor %}
+            ]
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}]
+    }
+});
+		</script>
+	</body>
+</html>
