@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib import auth
 import csv
 import os
 from django.conf import settings
@@ -26,10 +27,10 @@ class ExpensesAdmin(admin.ModelAdmin):
     )
     list_display = [f.name for f in Expenses._meta.fields]
 
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "main_category":
-            kwargs["queryset"] = Expenses.objects.filter(main_category__category_name=db_field.value)
-        return super(ExpensesAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+    # def formfield_for_foreignkey(self, db_field, request, **kwargs):
+    #     if db_field.name == "main_category":
+    #         kwargs["queryset"] = Expenses.objects.filter(main_category__category_name=db_field.value)
+    #     return super(ExpensesAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
 
 
 class DebitCategoryAdmin(admin.ModelAdmin):

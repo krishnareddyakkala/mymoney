@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.utils.encoding import python_2_unicode_compatible
 from django.db import models
 
+
 @python_2_unicode_compatible  # only if you need to support Python 2
 class MainCategory(models.Model):
     category_name = models.CharField("Category Name", max_length=120, unique=True)

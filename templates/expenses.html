@@ -5,10 +5,16 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Highcharts Example</title>
-		{% bootstrap_css %}
-
 		<script type="text/javascript" src=" {% static 'js/jquery-1.11.3.min.js' %}"></script>
-		{% bootstrap_javascript %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+		<!--<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>-->
+		<!--<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-grid.min.css' %}"/>-->
+		<!--<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-reboot.min.css' %}"/>-->
+		<!---->
+		<!--<script type="text/javascript" src=" {% static 'js/bootstrap.min.js' %}"></script>-->
+		<!--<script type="text/javascript" src=" {% static 'js/bootstrap.bundle.min.js' %}"></script>-->
+		<!--{% bootstrap_javascript %}-->
 		<style type="text/css">
 ${demo.css}
 		</style>
@@ -18,15 +24,27 @@ ${demo.css}
 	</head>
 	<body>
 
-	<form action="." method="post" class="form">
-    {% csrf_token %}
-    {% bootstrap_form date_range_form layout='inline' %}
-    {% buttons %}
-        <button type="submit" class="btn btn-primary">
-            {% bootstrap_icon "star" %} Submit
-        </button>
-    {% endbuttons %}
-</form>
+{% bootstrap_messages %}
+
+    <form class="form" action="{% url 'chart_view' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group has-error">
+            <label class="sr-only" for="id_start_date">Start date</label>
+            <input name="start_date" title="This field is required." class="form-control" id="id_start_date" required="" type="date" placeholder="Start date">
+        </div>
+
+        <div class="form-group has-error">
+            <label class="sr-only" for="id_end_date">End date</label>
+            <input name="end_date" title="This field is required." class="form-control" id="id_end_date" required="" type="date" placeholder="End date">
+        </div>
+		{% buttons %}
+			<button type="submit" class="btn btn-primary">
+			  {% bootstrap_icon "star" %} Submit
+			</button>
+		  {% endbuttons %}
+	</form>
+
+
 
 
 <div id="container" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
