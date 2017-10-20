@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec22e3b4-6711-4727-90fe-4b7bc236de75" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mymoney/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/admin.py" afterPath="$PROJECT_DIR$/accounts/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/models.py" afterPath="$PROJECT_DIR$/accounts/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/views.py" afterPath="$PROJECT_DIR$/accounts/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mymoney/urls.py" afterPath="$PROJECT_DIR$/mymoney/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/expenses.html" afterPath="$PROJECT_DIR$/templates/expenses.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -562,7 +554,14 @@
       <option name="project" value="LOCAL" />
       <updated>1508259557551</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Updated get and post functionality in accounts main page.&#10;Added March to October 17 hdfc transactions">
+      <created>1508524508328</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1508524508328</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -622,7 +621,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test commit from pycharm" />
-    <option name="LAST_COMMIT_MESSAGE" value="test commit from pycharm" />
+    <MESSAGE value="Updated get and post functionality in accounts main page.&#10;Added March to October 17 hdfc transactions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated get and post functionality in accounts main page.&#10;Added March to October 17 hdfc transactions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
